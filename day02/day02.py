@@ -19,9 +19,36 @@ def get_input(filename):
 
 #-------------------------------------------------------------------
 #-------------------------------------------------------------------
+def get_games(lines):
+    games = []
+    for line in lines:
+        (game_id, play) = line.split(':')
+        gid = int(game_id.split(' ')[1])
+        sets = play.split(';')
+        for s in sets:
+            tmp = s.split(',')
+            for t in tmp:
+                x, n, c = t.split(' ')
+                print("color:", c, "num:", int(n))
+        games.append((gid, sets))
+    return games
+
+
+#-------------------------------------------------------------------
+#-------------------------------------------------------------------
 def problem1():
-    my_input = get_input("day02_input.txt")
+#    my_input = get_input("day02_input.txt")
     my_input = get_input("day02_example1.txt")
+#    print(my_input)
+
+    my_games = get_games(my_input)
+    print(my_games)
+
+    for game in my_games:
+        (gid, sets) = game
+        for s in sets:
+            balls = s.split(',')
+            print("Game", gid, "pulls", balls)
 
 
     print("Problem 1")
@@ -33,7 +60,7 @@ def problem1():
 #-------------------------------------------------------------------
 def problem2():
     my_input = get_input("day02_input.txt")
-    my_input = get_input("day02_example2.txt")
+    my_input = get_input("day02_example1.txt")
 
     print("Problem 2")
     print("---------")
