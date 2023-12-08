@@ -25,10 +25,27 @@ def get_input(filename):
 
 #-------------------------------------------------------------------
 #-------------------------------------------------------------------
+def get_node_db(d):
+    my_db = {}
+    for n in d:
+        name  = n[0 : 3]
+        left  = n[7 : 10]
+        right = n[12 : 15]
+        my_db[name] = (left, right)
+    return my_db
+
+
+#-------------------------------------------------------------------
+#-------------------------------------------------------------------
 def problem1():
-    my_input = get_input("day08_input.txt")
 #    my_input = get_input("day08_example1.txt")
-    print(my_input)
+    my_input = get_input("day08_input.txt")
+
+    (directions, cards) = my_input
+    node_db = get_node_db(cards)
+
+    print("directions:", directions)
+    print("node_db:", node_db)
 
     print("Problem 1")
     print("---------")
