@@ -12,16 +12,22 @@
 def get_input(filename):
     l = []
     with open(filename,'r') as f:
+        n = 1
         for line in f:
-            l.append(line.strip())
-    return l
+            if n == 1:
+                d = line.strip()
+                n += 1
+
+            else:
+                l.append(line.strip())
+    return (d, l)
 
 
 #-------------------------------------------------------------------
 #-------------------------------------------------------------------
 def problem1():
-#    my_input = get_input("day08_input.txt")
-    my_input = get_input("day08_example1.txt")
+    my_input = get_input("day08_input.txt")
+#    my_input = get_input("day08_example1.txt")
     print(my_input)
 
     print("Problem 1")
