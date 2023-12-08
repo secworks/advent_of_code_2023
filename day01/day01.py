@@ -48,33 +48,40 @@ def problem1():
 
 #-------------------------------------------------------------------
 #-------------------------------------------------------------------
+def contain_num(s):
+    my_numbers = '1 one 2 two 3 three 4 four 5 five\
+    6 six 7 seven 8 eight 9 nine'.split(' ')
+
+    print(s)
+    for x in my_numbers:
+        if x in s:
+            return True
+    return False
+
+#-------------------------------------------------------------------
+#-------------------------------------------------------------------
 def problem2():
 #    my_input = get_input("day01_input.txt")
-    my_input = get_input("day01_example1.txt")
-
-    numbers = "0123456789"
-
-    num_words = {'one':1, 'two':2, 'three':3, 'four':4, 'five':5,
-                 'six':6, 'seven':7, 'eight':8, 'nine':9}
+    my_input = get_input("day01_example2.txt")
 
     sum_calibration = 0
-    left = 0
-    right = 0
 
     for s in my_input:
-        i = 0
-        while s[i] not in numbers:
-            i += 1
-        left = int(s[i])
+        left = 1
+        while not contain_num(s[0:left]) and left < len(s):
+            print("Looking at", s[0:left])
+            left += 1
+        print("Left number:", s[0:left])
+#
+#        right = 1
+#        while s[len(s) - right :] not in numbers:
+#            right += 1
+#        print("Right number:", s[len(s) - right :])
 
-        i = len(s) - 1
-        while s[i] not in numbers:
-            i -= 1
-        right = int(s[i])
-        sum_calibration += left * 10 + right
 
     print("Problem 2")
     print("---------")
+    print("Calibration values:", sum_calibration)
     print("")
 
 
@@ -82,7 +89,7 @@ def problem2():
 #-------------------------------------------------------------------
 print("Advent of Code 2023, day 01")
 print("===========================")
-problem1()
+#problem1()
 problem2()
 
 #=======================================================================
