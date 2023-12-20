@@ -20,9 +20,20 @@ def get_input(filename):
 
 #-------------------------------------------------------------------
 #-------------------------------------------------------------------
+def day15_hash(state, string):
+    for c in string:
+        state = ((state + ord(c)) * 17) % 256
+    return state
+
+
+#-------------------------------------------------------------------
+#-------------------------------------------------------------------
 def problem1():
 #    my_input = get_input("day15_example1.txt")
 #    my_input = get_input("day15_input.txt")
+
+    print("state of HASH:", day15_hash(0, "HASH"))
+
 
     print("Problem 1")
     print("---------")
