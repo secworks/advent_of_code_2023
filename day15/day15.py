@@ -10,12 +10,9 @@
 #-------------------------------------------------------------------
 #-------------------------------------------------------------------
 def get_input(filename):
-    l = []
     with open(filename,'r') as f:
-        n = 1
         for line in f:
-            l.append(line.strip())
-    return l
+            return line.strip().split(',')
 
 
 #-------------------------------------------------------------------
@@ -29,14 +26,16 @@ def day15_hash(state, string):
 #-------------------------------------------------------------------
 #-------------------------------------------------------------------
 def problem1():
+    my_input = get_input("day15_input.txt")
 #    my_input = get_input("day15_example1.txt")
-#    my_input = get_input("day15_input.txt")
 
-    print("state of HASH:", day15_hash(0, "HASH"))
-
+    state_sum = 0
+    for step in my_input:
+        state_sum += day15_hash(0, step)
 
     print("Problem 1")
     print("---------")
+    print("Sum after all steps:", state_sum)
     print("")
 
 
